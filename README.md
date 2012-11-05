@@ -1,4 +1,4 @@
-hatemail
+Badassery
 ========
 
-Making something that will give me a lot of hatemail
+I pivoted. This is now a project to make isawyou except ranting about awesome people.
