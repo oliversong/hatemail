@@ -1,4 +1,9 @@
 Badassery
 ========
 
-I pivoted. This is now a project to make isawyou except ranting about awesome people.
+I pivoted again, it's just going to be a shout out service.
+
+Todos
+-----
+1. Cookie for upvoting
+2. Fix working outside of request context bug
