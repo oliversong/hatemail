@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
     <ul class=entries>
-        <p>{{ entries }}</p>
         {% for entry in entries %}
         <li><h2>{{ entry.title }}</h2><span class="approve"></span>{{ entry.content }}</li><!--use an ajax post to approve-->
         {% else %}
