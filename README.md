@@ -7,3 +7,5 @@ Todos
 -----
 1. Cookie for upvoting
 2. Fix working outside of request context bug
+3. About page
+4. Unapproved expiration

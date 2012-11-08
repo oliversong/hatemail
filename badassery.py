@@ -12,7 +12,7 @@ from werkzeug import check_password_hash, generate_password_hash
 
 # config
 DATABASE = '/tmp/hatemail.db'
-DEBUG = True
+DEBUG = False
 PER_PAGE = 10
 SECRET_KEY = "devopsborat" # choose wisely
 PASSWORD = "default" # choose wisely
@@ -74,7 +74,6 @@ def index():
                 WHERE entry_id=?''',[request.form['entry_id']])
             db.commit()
             flash('Upvoted')
-
     return render_template('mainline.html', entries=query_db('''
         select entry.* from entry
         where entry.approved = 1
