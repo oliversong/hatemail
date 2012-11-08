@@ -61,12 +61,20 @@ def before_request():
 def index():
     if request.method == 'POST':
         #increment entry score
-        db = get_db()
-        db.execute('''UPDATE entry
-            SET score = score + 1
-            WHERE entry_id=?''',[request.form['entry_id']])
-        db.commit()
-        flash('Upvoted')
+        if request.form['del'] == 'true':
+            db = get_db()
+            db.execute('''DELETE FROM entry
+                WHERE entry_id=?''',[request.form['entry_id']])
+            db.commit()
+            flash('Deleted')
+        else:
+            db = get_db()
+            db.execute('''UPDATE entry
+                SET score = score + 1
+                WHERE entry_id=?''',[request.form['entry_id']])
+            db.commit()
+            flash('Upvoted')
+
     return render_template('mainline.html', entries=query_db('''
         select entry.* from entry
         where entry.approved = 1

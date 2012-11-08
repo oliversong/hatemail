@@ -1,19 +1,27 @@
 {% extends "layout.html" %}
 {% block body %}
-    <a class='submit' href="{{ url_for('submit') }}">Submit</a>
-    <ul class=entries>
-    {% if session.logged_in %}
-        {% for entry in entries %}
-        <li><h2>{{ entry.title }}</h2><span class="upvote">{{ entry.score }}</span><span class="delete"></span>{{ entry.content }}<!--use an ajax post to upvote-->
-        {% else %}
-        <li><em>Unbelievable. No entries here so far</em>
-        {% endfor %}
-    {% else %}
-        {% for entry in entries %}
-        <li><h2>{{ entry.title }}</h2><span class="upvote"></span>{{ entry.content }}<!--use an ajax post to upvote-->
-        {% else %}
-        <li><em>Unbelievable. No entries here so far</em>
-        {% endfor %}
-    {% endif %}
-    </ul>
+    <div class="row">
+        <div class="span12">
+            <a class='submit' href="{{ url_for('submit') }}">Submit</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <ul class=entries>
+            {% if session.mod_id %}
+                {% for entry in entries %}
+                <li><h2>{{ entry.title }}</h2>{{ entry.content }}<div class="upvote {{ entry.entry_id }}">{{ entry.score }}</div><div class="delete {{ entry.entry_id }}"></div><!--use an ajax post to upvote-->
+                {% else %}
+                <li><em>Unbelievable. No entries here so far</em>
+                {% endfor %}
+            {% else %}
+                {% for entry in entries %}
+                <li><h2>{{ entry.title }}</h2>{{ entry.content }}<div class="upvote {{ entry.entry_id }}">{{ entry.score }}</div><!--use an ajax post to upvote-->
+                {% else %}
+                <li><em>Unbelievable. No entries here so far</em>
+                {% endfor %}
+            {% endif %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}

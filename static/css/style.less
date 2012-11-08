@@ -1,15 +1,53 @@
-@base: #f938ab;
-
-.box-shadow(@style, @c) when (iscolor(@c)) {
-    box-shadow:         @style @c;
-    -webkit-box-shadow: @style @c;
-    -moz-box-shadow:    @style @c;
+.approve {
+	position:relative;
+	width:20px;
+	height:20px;
+	background-color:#555;
+	left:-35px;
+	top:-60px;
+	cursor:pointer;
 }
-.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
-    .box-shadow(@style, rgba(0, 0, 0, @alpha));
+.approve:hover{
+	background-color:#888;
 }
-.box { 
-    color: saturate(@base, 5%);
-    border-color: lighten(@base, 30%);
-    div { .box-shadow(0 0 5px, 30%) }
+.approve:active{
+	background-color:#000;
+}
+.upvote{
+	position:relative;
+	width:20px;
+	height:20px;
+	background-color:blue;
+	font-size:15px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	left:-35px;
+	top:-60px;
+	cursor:pointer;
+}
+.upvote:hover{
+	background-color:#618AFA;
+}
+.upvote:active{
+	background-color:#2E557F;
+}
+.delete{
+	position:relative;
+	width:20px;
+	height:20px;
+	background-color:red;
+	left:-35px;
+	top:-60px;
+	cursor:pointer;
+}
+.delete:hover{
+	background-color:#ff4422;
+}
+.delete:active{
+	background-color:#bb0000;
+}
+li{
+	list-style: none;
+	margin-left:10px;
 }
