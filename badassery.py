@@ -94,8 +94,10 @@ def submit():
     if request.method == 'POST':
         if not request.form['name']:
             error = 'You have to enter a name'
+	    flash(error)
         elif not request.form['content']:
             error = 'You have to enter content'
+	    flash(error)
         else:
             db = get_db()
             db.execute('''insert into entry (
@@ -113,8 +115,10 @@ def authenticate():
         mod = query_db('select * from mod', one=True)
         if not request.form['password']:
             error = 'You have to enter a password'
+	    flash(error)
         elif not check_password_hash(mod[1], request.form['password']):
             error = 'Invalid password'
+	    flash(error)
         else:
             flash('Welcome back, mod')
             session['mod_id'] = mod[0]
