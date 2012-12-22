@@ -1,10 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
-	<div class="row">
+	<div class="row main">
 		<div class="span12">
 		    <ul class=entries>
 		        {% for entry in entries %}
-			        <li><h2>{{ entry.title }}</h2>{{ entry.content }}<div class="approve {{ entry.entry_id }}"></div></li><!--use an ajax post to approve-->
+			        <li class="mb">
+			        	<div class="approve {{ entry.entry_id }}"></div>
+			        	<div class="entry">
+				        	<h2>{{ entry.title }}</h2>
+				        	{{ entry.content.replace('\r\n','&#13;') }}
+				        </div>
+			        </li>
 		        {% else %}
 			        <li><em>Unbelievable. No entries here so far</em></li>
 		        {% endfor %}

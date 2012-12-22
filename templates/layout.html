@@ -20,16 +20,30 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="span12">
-                    <a href="{{ url_for('index') }}"><h1>Shoutout</h1></a><hr>
+                <div class="span3">
+                    <a href="{{ url_for('index') }}"><h1>Shoutout</h1></a>
+                </div>
+                <div class="span1 offset8 herp">
+                    <a class='submit' href="{{ url_for('submit') }}">Submit</a>
                 </div>
             </div>
+            <hr class="hro">
             <div class="row">
             {% for message in get_flashed_messages() %}
                 <div class="flash span12">{{ message }}</div>
             {% endfor %}
             </div>
             {% block body %}{%endblock %}
+            <hr>
+            <div class="row">
+                <div class="span4 offset4">
+                    <ul class="foot">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('submit') }}">Submit</a></li>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </body>
 </html>
