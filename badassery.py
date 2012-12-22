@@ -104,7 +104,7 @@ def submit():
             title, content, score, approved, pub_date) values (?, ?, 0, 0,?)''',
             [request.form['name'],request.form['content'],int(time.time())])
             db.commit()
-            flash('Successfully submitted! Awaiting approval')
+            flash('Successfully submitted! Awaiting moderator approval.')
             return redirect(url_for('index'))
     return render_template('submit.html')
 
@@ -140,12 +140,17 @@ def modqueue():
             WHERE entry_id=?''',[request.form['entry_id']])
         db.commit()
         flash('Approved')
-    return render_template('admin.html', entries=query_db('''
+    temp=query_db('''
             select entry.* from entry
             where entry.approved = 0
             order by entry.pub_date desc limit ?
             ''',
-            [PER_PAGE]))
+            [PER_PAGE])
+    return render_template('admin.html', entries=temp)
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 if __name__ == "__main__":
     app.run()

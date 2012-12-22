@@ -1,22 +1,29 @@
 {% extends "layout.html" %}
 {% block body %}
-    <div class="row">
-        <div class="span12">
-            <a class='submit' href="{{ url_for('submit') }}">Submit</a>
-        </div>
-    </div>
-    <div class="row">
+
+    <div class="row main">
         <div class="span12">
             <ul class=entries>
             {% if session.mod_id %}
                 {% for entry in entries %}
-                <li><h2>{{ entry.title }}</h2>{{ entry.content }}<div class="upvote {{ entry.entry_id }}">{{ entry.score }}</div><div class="delete {{ entry.entry_id }}"></div><!--use an ajax post to upvote-->
+                <li class="mb">
+                    <div class="upvote {{ entry.entry_id }}">{{ entry.score }}</div>
+                    <div class="entry">
+                        <h2>{{ entry.title }}</h2>
+                        {{ entry.content }}
+                    </div>
+                    <div class="delete {{ entry.entry_id }}"></div>
                 {% else %}
                 <li><em>Unbelievable. No entries here so far</em>
                 {% endfor %}
             {% else %}
                 {% for entry in entries %}
-                <li><h2>{{ entry.title }}</h2>{{ entry.content }}<div class="upvote {{ entry.entry_id }}">{{ entry.score }}</div><!--use an ajax post to upvote-->
+                <li class="mb">
+                    <div class="upvote {{ entry.entry_id }}">{{ entry.score }}</div>
+                    <div class="entry">
+                        <h2>{{ entry.title }}</h2>
+                        {{ entry.content }}
+                    </div>
                 {% else %}
                 <li><em>Unbelievable. No entries here so far</em>
                 {% endfor %}
