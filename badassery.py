@@ -109,7 +109,7 @@ def before_request():
 @app.route("/<int:page>", methods=['GET', 'POST'])
 def index(page):
     if 'upvotes' not in session:
-    session['upvotes']=[]
+        session['upvotes']=[]
     if request.method == 'POST':
         #increment entry score
         if request.form['del'] == 'true':
