@@ -5,8 +5,12 @@ I pivoted again, it's just going to be a shout out service.
 
 Todos
 -----
-1. Cookie for upvoting
-2. About page
-3. Unapproved expiration
-4. Pagination
-5. Footer
+1. About page
+2. Unapproved expiration
+
+Done
+-----
+* Footer
+* Handle newline correctly
+* Pagination
+* Cookie for upvoting

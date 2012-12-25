@@ -23,13 +23,16 @@ $(document).ready(function(){
 		// post request to server containing ID
 		var pathname = window.location.pathname;
 		var classes = $(this).attr('class').split(/\s+/);
-		var entry = classes.slice(-1)[0]
-		var data = {del:'false',entry_id:entry};
-		var herp = $(this);
-		$.post(pathname,data,function(d,st,xr){
-			console.log("Successful upvote");
-			herp.text((parseInt(herp.text())+1).toString());
-		});
+		var entry = classes.slice(-2)[0];
+		if (classes.slice(-1)[0] == 'unvoted'){
+			var data = {del:'false',entry_id:entry};
+			var herp = $(this);
+			$.post(pathname,data,function(d,st,xr){
+				console.log("Successful upvote");
+				herp.text((parseInt(herp.text())+1).toString());
+				herp.removeClass('unvoted').addClass('voted')
+			});
+		};
 	});
 
 

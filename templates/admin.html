@@ -8,7 +8,9 @@
 			        	<div class="approve {{ entry.entry_id }}"></div>
 			        	<div class="entry">
 				        	<h2>{{ entry.title }}</h2>
-				        	{{ entry.content.replace('\r\n','&#13;') }}
+				        	{% for line in entry.content.splitlines() %}
+    							{{line}}<br>
+							{% endfor %}
 				        </div>
 			        </li>
 		        {% else %}
