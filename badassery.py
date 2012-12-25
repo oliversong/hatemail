@@ -108,6 +108,8 @@ def before_request():
 @app.route("/", defaults={'page':1}, methods=['GET', 'POST'])
 @app.route("/<int:page>", methods=['GET', 'POST'])
 def index(page):
+    if 'upvotes' not in session:
+    session['upvotes']=[]
     if request.method == 'POST':
         #increment entry score
         if request.form['del'] == 'true':
@@ -118,8 +120,6 @@ def index(page):
             flash('Deleted')
         else:
             # check cookie. If already voted, reject. If not, upvote and update cookie.
-            if 'upvotes' not in session:
-                session['upvotes']=[]
             if request.form['entry_id'] in session['upvotes']:
                 flash('Already Upvoted, dude.')
             else:
