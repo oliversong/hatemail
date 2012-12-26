@@ -2,7 +2,7 @@
 {% block body %}
 
     {% macro render_pagination(pagination) %}
-      <div class=pagination>
+      <div>
       {%- for page in pagination.iter_pages() %}
         {% if page %}
           {% if page != pagination.page %}

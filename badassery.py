@@ -139,8 +139,8 @@ def index(page):
         [(page-1)*PER_PAGE, PER_PAGE])
     dictrows = [dict(row) for row in entries]
     for r in dictrows:
-            r['title'] = str(r['title'])
-            r['content'] = str(r['content'])
+            #r['title'] = str(r['title'])
+            #r['content'] = str(r['content'])
             if str(r['entry_id']) in session['upvotes']:
                 r['locked'] = 'voted'
             else:
@@ -161,8 +161,9 @@ def submit():
 	    flash(error)
         else:
             db = get_db()
-            hello = escape(str(request.form['name'])).striptags()
-            what = escape(str(request.form['content'])).striptags()
+            hello = escape(request.form['name']).striptags()
+            hup = request.form['content']
+            what = escape(hup).striptags()
             db.execute('''insert into entry (
             title, content, score, approved, pub_date) values (?, ?, 0, 0,?)''',
             [hello,what,int(time.time())])
@@ -209,9 +210,9 @@ def modqueue():
             order by entry.pub_date desc
             ''')
     dictrows = [dict(row) for row in temp]
-    for r in dictrows:
-            r['title'] = str(r['title'])
-            r['content'] = str(r['content'])
+    #for r in dictrows:
+            #r['title'] = str(r['title'])
+            #r['content'] = str(r['content'])
     return render_template('admin.html', entries=dictrows)
 
 @app.route("/about")
