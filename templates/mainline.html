@@ -31,7 +31,9 @@
                     <div class="upvote {{ entry.entry_id }} {{ entry.locked }}">{{ entry.score }}</div>
                     <div class="entry">
                         <h2>{{ entry.title }}</h2>
-                        {{ entry.content }}
+                        {% for line in entry.content.splitlines() %}
+                            {{line}}<br>
+                        {% endfor %}
                     </div>
                     <div class="delete {{ entry.entry_id }}"></div>
                 {% else %}
@@ -43,7 +45,9 @@
                     <div class="upvote {{ entry.entry_id }} {{ entry.locked }}">{{ entry.score }}</div>
                     <div class="entry">
                         <h2>{{ entry.title }}</h2>
-                        {{ entry.content }}
+                        {% for line in entry.content.splitlines() %}
+                            {{line}}<br>
+                        {% endfor %}
                     </div>
                 {% else %}
                 <li><em>Unbelievable. No entries here so far</em>

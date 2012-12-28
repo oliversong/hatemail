@@ -13,7 +13,7 @@ from math import ceil
 
 # config
 DATABASE = '/tmp/hatemail.db'
-DEBUG = True
+DEBUG = False 
 PER_PAGE = 10
 SECRET_KEY = "devopsborat" # choose wisely
 PASSWORD = "default" # choose wisely
@@ -166,7 +166,7 @@ def submit():
             what = escape(hup).striptags()
             db.execute('''insert into entry (
             title, content, score, approved, pub_date) values (?, ?, 0, 0,?)''',
-            [hello,what,int(time.time())])
+            [hello,hup,int(time.time())])
             db.commit()
             flash('Successfully submitted! Awaiting moderator approval.')
             return redirect(url_for('index'))
