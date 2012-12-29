@@ -113,6 +113,8 @@ def index(page):
     if request.method == 'POST':
         #increment entry score
         if request.form['del'] == 'true':
+            if 'mod_id' not in session:
+                abort(401)
             db = get_db()
             db.execute('''DELETE FROM entry
                 WHERE entry_id=?''',[request.form['entry_id']])

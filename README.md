@@ -18,3 +18,6 @@ Done
 ========
 Error logs: sudo vim /etc/httpd/logs/error_log
 Restart server: /etc/init.d/httpd restart
+Perms:
+sudo chgrp -R apache /tmp
+sudo chmod -R g+w /tmp
